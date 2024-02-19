@@ -203,6 +203,18 @@ function App() {
     }
   };
 
+
+  // if("serviceWorker" in navigator){
+  //   console.log("Service Worker is supported");
+  //   window.addEventListener("load", () => {
+  //     navigator.serviceWorker.register("./main.tsx").then((reg)=> {
+  //       console.log("service worker registered", reg);
+  //     }).catch((err) => {
+  //       console.log("Error registering service worker", err);
+  //     })
+  //   });
+  // }
+
   return (
     <>
       <h1 style={{ textAlign: 'center' }}>Hello world</h1>
