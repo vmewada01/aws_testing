@@ -1,0 +1,29 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.storage-section {
+  margin-bottom: 20px;
+}
+
+.cache-section {
+  margin-top: 40px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 8px;
+}
+
+button {
+  margin-left: 10px;
+}
+
+button:hover {
+  cursor: pointer;
+}

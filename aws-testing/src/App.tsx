@@ -40,7 +40,7 @@ function App() {
   }, []);
 
   const addToLocalStorage = () => {
-    const newData: IData = { id: localStorageData.length + 1, name: 'New Name' };
+    const newData: IData = { id: localStorageData.length + 1, name: `New Name ${localStorageData.length+1}` };
     const updatedData = [...localStorageData, newData];
     localStorage.setItem('localStorageData', JSON.stringify(updatedData));
     setLocalStorageData(updatedData);
@@ -64,7 +64,7 @@ function App() {
   }, []);
 
   const addToSessionStorage = () => {
-    const newData: IData = { id: sessionStorageData.length + 1, name: 'New Name' };
+    const newData: IData = { id: sessionStorageData.length + 1, name: `New Name ${sessionStorageData.length+1}` };
     const updatedData = [...sessionStorageData, newData];
     sessionStorage.setItem('sessionStorageData', JSON.stringify(updatedData));
     setSessionStorageData(updatedData);
@@ -107,7 +107,7 @@ function App() {
   }, []);
 
   const addToIndexedDB = () => {
-    const newData: IData = { id: indexedDBData.length + 1, name: 'New Name' };
+    const newData: IData = { id: indexedDBData.length + 1, name: `New Name ${indexedDBData.length+1}` };
 
     const request = indexedDB.open('example_db', 1);
 
@@ -150,7 +150,7 @@ function App() {
   }, []);
 
   const addToCookies = () => {
-    const newData: IData = { id: cookieData.length + 1, name: 'New Name' };
+    const newData: IData = { id: cookieData.length + 1, name: `New Name ${cookieData.length+1}` };
     const updatedData = [...cookieData, newData];
     document.cookie = `cookieData=${encodeURIComponent(JSON.stringify(updatedData))}`;
     setCookieData(updatedData);
@@ -183,7 +183,7 @@ function App() {
   // Update data in Cache Storage
   const updateCacheData = async () => {
     try {
-      const newData: IData = { id: 4, name: 'New Name' };
+      const newData: IData = { id: 4, name: 'New Cache' };
       const cache = await caches.open('example_cache');
       await cache.put('example_data', new Response(JSON.stringify(newData)));
       setCacheStorageData(newData);
@@ -204,30 +204,13 @@ function App() {
   };
 
 
-  // if("serviceWorker" in navigator){
-  //   console.log("Service Worker is supported");
-  //   window.addEventListener("load", () => {
-  //     navigator.serviceWorker.register("./main.tsx").then((reg)=> {
-  //       console.log("service worker registered", reg);
-  //     }).catch((err) => {
-  //       console.log("Error registering service worker", err);
-  //     })
-  //   });
-  // }
 
   return (
     <>
-      <h1 style={{ textAlign: 'center' }}>Hello world</h1>
-      <p style={{ width: '100%', textAlign: 'center', fontSize: '20px', fontWeight: 'bold' }}>Count: {count}</p>
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <button style={{ margin: 'auto', width: '100%' }} onClick={increment}>
-          Increment
-        </button>
-        <button style={{ margin: 'auto', width: '100%' }} onClick={decrement}>
-          Decrement
-        </button>
-      </div>
-      <div>
+     <div className="container">
+      <h1>Different Browser Storage</h1>
+
+      <div className="storage-section">
         <h2>Local Storage</h2>
         <ul>
           {localStorageData.map((item) => (
@@ -238,7 +221,9 @@ function App() {
           ))}
         </ul>
         <button onClick={addToLocalStorage}>Add New Item</button>
+      </div>
 
+      <div className="storage-section">
         <h2>Session Storage</h2>
         <ul>
           {sessionStorageData.map((item) => (
@@ -249,7 +234,9 @@ function App() {
           ))}
         </ul>
         <button onClick={addToSessionStorage}>Add New Item</button>
+      </div>
 
+      <div className="storage-section">
         <h2>IndexedDB</h2>
         <ul>
           {indexedDBData.map((item) => (
@@ -260,7 +247,9 @@ function App() {
           ))}
         </ul>
         <button onClick={addToIndexedDB}>Add New Item</button>
+      </div>
 
+      <div className="storage-section">
         <h2>Cookies</h2>
         <ul>
           {cookieData.map((item) => (
@@ -273,7 +262,7 @@ function App() {
         <button onClick={addToCookies}>Add New Item</button>
       </div>
 
-      <div>
+      <div className="cache-section">
         <h2>Cache Storage</h2>
         {cacheStorageData && (
           <div>
@@ -281,9 +270,10 @@ function App() {
             <p>Name: {cacheStorageData.name}</p>
           </div>
         )}
-        <button onClick={updateCacheData}>Update Cache Data</button>
+        <button onClick={updateCacheData}>Create Cache Data</button>
         <button onClick={clearCacheData}>Clear Cache Data</button>
       </div>
+    </div>
     </>
   );
 }
