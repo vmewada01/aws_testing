@@ -216,11 +216,11 @@ function App() {
           {localStorageData.map((item) => (
             <li key={item.id}>
               {item.name}
-              <button onClick={() => removeFromLocalStorage(item.id)}>Remove</button>
+              <button onClick={() => removeFromLocalStorage(item.id)}><span> Remove</span></button>
             </li>
           ))}
         </ul>
-        <button onClick={addToLocalStorage}>Add New Item</button>
+        <button onClick={addToLocalStorage}> <span> Add New Item</span></button>
       </div>
 
       <div className="storage-section">
@@ -229,11 +229,11 @@ function App() {
           {sessionStorageData.map((item) => (
             <li key={item.id}>
               {item.name}
-              <button onClick={() => removeFromSessionStorage(item.id)}>Remove</button>
+              <button onClick={() => removeFromSessionStorage(item.id)}><span> Remove</span></button>
             </li>
           ))}
         </ul>
-        <button onClick={addToSessionStorage}>Add New Item</button>
+        <button onClick={addToSessionStorage}> <span> Add New Item</span></button>
       </div>
 
       <div className="storage-section">
@@ -242,11 +242,13 @@ function App() {
           {indexedDBData.map((item) => (
             <li key={item.id}>
               {item.name}
-              <button onClick={() => removeFromIndexedDB(item.id)}>Remove</button>
+              <button onClick={() => removeFromIndexedDB(item.id)}><span> Remove</span></button>
             </li>
           ))}
         </ul>
-        <button onClick={addToIndexedDB}>Add New Item</button>
+        <button onClick={addToIndexedDB}>
+        <span> Add New Item</span>
+         </button>
       </div>
 
       <div className="storage-section">
@@ -259,7 +261,9 @@ function App() {
             </li>
           ))}
         </ul>
-        <button onClick={addToCookies}>Add New Item</button>
+        <button onClick={addToCookies}>
+        <span>  Add New Item</span>
+        </button>
       </div>
 
       <div className="cache-section">
@@ -270,10 +274,12 @@ function App() {
             <p>Name: {cacheStorageData.name}</p>
           </div>
         )}
-        <button onClick={updateCacheData}>Create Cache Data</button>
-        <button onClick={clearCacheData}>Clear Cache Data</button>
+        <button onClick={updateCacheData}>  <span> Create Cache Data</span></button>
+        <button onClick={clearCacheData}> <span> Clear Cache Data</span></button>
       </div>
     </div>
+     {/* New Login page ui implementation */}
+     {/* <Login /> */}
     </>
   );
 }
